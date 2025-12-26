@@ -2,7 +2,7 @@
 
 ![Intro Image](intro_image.jpg)
 
-[Access the Deployed Model on the Web🍅]([https://industrial-combustion-energy-use-analysis-us.streamlit.app/](https://plant-disease-prediction-using-deep-learning-cnn-and-keras.streamlit.app/))
+[Access the Deployed Model on the Web🍅](https://plant-disease-prediction-using-deep-learning-cnn-and-keras.streamlit.app/)
 
 A comprehensive deep learning project to classify plant diseases from leaf images using Convolutional Neural Networks (CNN) with TensorFlow and Keras. This repository includes the complete pipeline from data preprocessing and model training to deployment using a Streamlit web application.
 
