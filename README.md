@@ -1,6 +1,6 @@
 # Plant Disease Prediction using Deep Learning (CNN) & Keras
 
-![Intro Image](/intro_image.jpg)
+![Intro Image](./intro_image.jpg)
 
 [Access the Deployed Model on the Web🍅](https://plant-disease-prediction-using-deep-learning-cnn-and-keras.streamlit.app/)
 
@@ -32,7 +32,7 @@ The model is trained on the **[New Plant Diseases Dataset]**(https://www.kaggle.
 * **Crop Types:** Apple, Blueberry, Cherry, Corn, Grape, Orange, Peach, Pepper, Potato, Raspberry, Soybean, Squash, Strawberry, Tomato.
 
 ## 📁 Repository Structure
-
+<pre>
 ├── .vscode
 │   ├── settings.json       # IDE settings
 ├── model_results_images
@@ -55,7 +55,8 @@ The model is trained on the **[New Plant Diseases Dataset]**(https://www.kaggle.
 ├── LICENSE
 ├── README.md
 ├── intro_image.jpg        # for homepage
-└── requirements.txt       # project specific ependencies
+└── requirements.txt       # project specific dependencies
+</pre>
 
 ## 🚀 Getting Started
 
