@@ -1,7 +1,7 @@
 # Plant Disease Prediction using Deep Learning (CNN) & Keras
 
 
-![Intro Image](./intro_image.jpg)
+![Intro Image](https://github.com/Oluwatobi-coder/plant-disease-prediction-using-deep-learning-cnn-and-keras/blob/main/intro_image.jpg)
 
 
 [Access the Deployed Model on the Web🍅](https://plant-disease-prediction-using-deep-learning-cnn-and-keras.streamlit.app/)
