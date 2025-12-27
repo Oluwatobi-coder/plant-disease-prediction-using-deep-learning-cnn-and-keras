@@ -3,7 +3,7 @@
 [Access the Deployed Model on the Web🍅](https://plant-disease-prediction-using-deep-learning-cnn-and-keras.streamlit.app/)
 
 <p>
-<img src="./intro_image.jpg" alt="Home Image" style="width:100% height:200px">
+<img src="./intro_image.jpg" alt="Home Image" style="width:100%; height:200px;">
 </p>
 
 
