@@ -114,3 +114,21 @@ streamlit run streamlit_app/plant_disease_prediction_app.py
   <p align="center">
   <img src="./model_results_images/prediction_results.png" width="100%" />
 </p>
+
+## 🤝 Contributing
+
+Contributions are welcome! If you have suggestions for improving the model accuracy or the web interface:
+
+* Fork the repository.
+
+* Create a new branch (`git checkout -b feature-branch`).
+
+* Commit your changes.
+
+* Push to the branch and open a Pull Request.
+
+## 📜 License
+
+This project is licensed under the MIT License - see the `LICENSE file` for details.
+
+If you find this research or implementation helpful in your own work, feel free to ⭐ the repository to help others find it.
