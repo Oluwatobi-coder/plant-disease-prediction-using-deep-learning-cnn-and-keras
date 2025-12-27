@@ -3,7 +3,6 @@ streamlit
 numpy
 pandas
 seaborn
-dotenv
 matplotlib
 scikit-learn
 opencv-contrib-python

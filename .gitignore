@@ -1,5 +1,2 @@
 # ignore dataset files
 unzipped_dataset/
-
-# ignore env files
-variables.env
