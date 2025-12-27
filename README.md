@@ -66,7 +66,8 @@ The model is trained on the **[New Plant Diseases Dataset](https://www.kaggle.co
 Follow these steps to set up the project locally.
 
 ### Prerequisites
-Ensure you have **Python 3.8+** installed.
+
+**Python 3.8+**
 
 ### 1. Clone the Repository
 ```bash
@@ -87,6 +88,17 @@ If you want to retrain the model or experiment with the architecture:
 2. Open the training notebook (e.g., via VS Code or any other IDE of choice).
 
 3. Run the cells to train the model. The trained model will be saved to the `trained_model/` directory.
+
+**Note:** This model was trained with NVIDIA T4 GPU acceleration, which is significantly faster than CPU-only execution. For best performance, run the project on [Google Colab](https://colab.research.google.com/drive/1IWpyH0gZbqp6BXenF5ZVK4Xexo28Ly2S?usp=sharing)  or a local system with an NVIDIA GPU and CUDA 12.x installed.
+
+## 🚦 Model Testing
+If you want to retrain the model or experiment with the architecture:
+
+1. Navigate to the `model_test_notebook/` directory.
+
+2. Open the training notebook (e.g., via VS Code or any other IDE of choice).
+
+3. Run the cells to test the model. Ensure the model is located at the `trained_model/` directory.
 
 ## 🌐 Running the Streamlit App
 To interact with the model using the web interface locally:
