@@ -107,10 +107,10 @@ streamlit run streamlit_app/plant_disease_prediction_app.py
 
   <p align="center">
   <img src="./model_results_images/accuracy_results.png" width="45%" />
-  <img src="./model_results_images/loss_results.jpg" width="45%" />
+  <img src="./model_results_images/loss_results.png" width="45%" />
 </p>
 
 * **Sample Results:** visualized in the `plant_disease_model_test.ipynb` notebook in the `model_test_notebook` directory and saved in `model_results_images` folder.
   <p align="center">
-  <img src="./model_results_images/accuracy_results.png" width="100%" />
+  <img src="./model_results_images/prediction_results.png" width="100%" />
 </p>
