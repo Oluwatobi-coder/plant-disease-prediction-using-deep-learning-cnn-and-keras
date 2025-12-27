@@ -26,7 +26,7 @@ st.set_page_config(page_title='Automated Plant Disease Classification', page_ico
 
 # sidebar navigation
 st.sidebar.title("Dashboard")
-app_mode = st.sidebar.radio("Select Page",["Overview","Technical Specifications", "Model Performance", "Plant Disease Model"])
+app_mode = st.sidebar.radio("Select Page",["Overview","Technical Specifications", "Model Performance", "Plant Disease Model", "Future Works"])
 
 
 # Main Page
@@ -184,3 +184,22 @@ elif(app_mode=="Plant Disease Model"):
     st.markdown("### Download Sample Test Images")
     st.markdown("You can download the sample images to test the model:")
     st.markdown("[Download Sample Test Images](https://drive.google.com/drive/folders/1FDVDvcanXH1_muWZ4aV7LuzXFQT4bW32?usp=sharing)")
+
+
+# Future Works
+elif(app_mode=="Future Works"):
+    # displaying future works and improvements
+    st.header("Future Works & Improvements")
+    st.write("Presented in this section are areas for further improvement on this project:")
+    
+    st.write("""
+        **1. Dataset Expansion:** Incorporating additional crops (e.g., Grapes, Corn) to enhance model robustness.
+        """)
+
+    st.write("""
+        **2. Real-Time Detection:** Integrating the model with a live video feed to allow for real-time disease spotting via a live drone or smartphone camera feed.
+        """)
+
+    st.write("""
+        **3. Treatment Recommendation System:** Connecting the model to a treatment recommendation system to provide tailored organic and chemical treatment recommendations.
+        """)
