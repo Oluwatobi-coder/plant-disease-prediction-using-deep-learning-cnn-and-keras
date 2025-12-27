@@ -2,9 +2,9 @@
 
 [Access the Deployed Model on the Web🍅](https://plant-disease-prediction-using-deep-learning-cnn-and-keras.streamlit.app/)
 
-
-<img src="https://github.com/Oluwatobi-coder/plant-disease-prediction-using-deep-learning-cnn-and-keras/blob/main/intro_image.jpg" alt="Home Image" style="width:100%; height:300px;">
-![intro_image](https://github.com/user-attachments/assets/a31a38ed-60d6-4120-ac3b-386c71ba2cc7)
+<p>
+<img src="./intro_image.jpg" alt="Home Image" "width:100%" "height:300px">
+</p>
 
 
 A comprehensive deep learning project to classify plant diseases from leaf images using Convolutional Neural Networks (CNN) with TensorFlow and Keras. This repository includes the complete pipeline from data preprocessing and model training to deployment using a Streamlit web application.
@@ -105,4 +105,12 @@ streamlit run streamlit_app/plant_disease_prediction_app.py
 
 * **Accuracy and Loss Curves:** visualized in the `plant_disease_detection.ipynb` notebook in the `model_training_notebook` directory and saved in `model_results_images` folder.
 
+  <p align="center">
+  <img src="./model_results_images/accuracy_results.png" width="45%" />
+  <img src="./model_results_images/loss_results.jpg" width="45%" />
+</p>
+
 * **Sample Results:** visualized in the `plant_disease_model_test.ipynb` notebook in the `model_test_notebook` directory and saved in `model_results_images` folder.
+  <p align="center">
+  <img src="./model_results_images/accuracy_results.png" width="100%" />
+</p>
