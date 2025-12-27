@@ -1,8 +1,6 @@
 # Plant Disease Prediction using Deep Learning (CNN) & Keras
 
-
-![Intro Image](https://github.com/Oluwatobi-coder/plant-disease-prediction-using-deep-learning-cnn-and-keras/blob/main/intro_image.jpg)
-
+<img src="https://github.com/Oluwatobi-coder/plant-disease-prediction-using-deep-learning-cnn-and-keras/blob/main/intro_image.jpg" alt="Home Image" style="width:100%; height:200px;">
 
 [Access the Deployed Model on the Web🍅](https://plant-disease-prediction-using-deep-learning-cnn-and-keras.streamlit.app/)
 
@@ -28,7 +26,7 @@ Plant diseases pose a significant threat to global food security. Early detectio
 
 ## 📂 Dataset
 
-The model is trained on the **[New Plant Diseases Dataset]**(https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset)(available on Kaggle).
+The model is trained on the **[New Plant Diseases Dataset]** (https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset) (available on Kaggle).
 * **Total Classes:** 38 (Disease categories + Healthy plants)
 * **Total Images:** 87,000+ RGB images.
 * **Crop Types:** Apple, Blueberry, Cherry, Corn, Grape, Orange, Peach, Pepper, Potato, Raspberry, Soybean, Squash, Strawberry, Tomato.
