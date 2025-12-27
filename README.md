@@ -29,7 +29,7 @@ Plant diseases pose a significant threat to global food security. Early detectio
 
 ## 📂 Dataset
 
-The model is trained on the **[New Plant Diseases Dataset]** (https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset) (available on Kaggle).
+The model is trained on the **[New Plant Diseases Dataset](https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset) (available on Kaggle)**.
 * **Total Classes:** 38 (Disease categories + Healthy plants)
 * **Total Images:** 87,000+ RGB images.
 * **Crop Types:** Apple, Blueberry, Cherry, Corn, Grape, Orange, Peach, Pepper, Potato, Raspberry, Soybean, Squash, Strawberry, Tomato.
