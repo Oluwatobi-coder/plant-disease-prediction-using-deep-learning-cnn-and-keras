@@ -22,7 +22,7 @@ Plant diseases pose a significant threat to global food security. Early detectio
 * **Web Framework:** Streamlit
 * **Development Environment:** Jupyter Notebook, VS Code, Google Colab
 
-**Key Features:**
+## ⚙️ Key Features
 * **CNN Model:** Built using TensorFlow/Keras.
 * **Web Interface:** A user-friendly Streamlit app for real-time predictions on uploaded images.
 * **Visualization:** Includes accuracy and loss curves, confusion matrices and plant health condition prediction results.
