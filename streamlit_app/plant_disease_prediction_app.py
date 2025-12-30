@@ -4,8 +4,11 @@ import tensorflow as tf
 import numpy as np
 from PIL import Image
 import time
+import os
+import random
 
 # function for processing CNN model prediction
+# @st.cache_resource
 def model_prediction(test_image):
     # loading the trained model and preprocessing the image
     model = tf.keras.models.load_model("./trained_model/plant_disease_trained_model.keras")
@@ -19,6 +22,59 @@ def model_prediction(test_image):
     # returning the predicted class index and confidence score
     return result_index, max_value
 
+# 1. Initialize Session State to store the "selected" image path
+if 'selected_image' not in st.session_state:
+    st.session_state.selected_image = None
+
+if 'already_processed' not in st.session_state:
+    st.session_state.already_processed = False
+
+def start_analysis():
+    st.session_state.already_processed = True
+
+def confirm_img_load():
+    st.session_state.already_processed = False
+
+# specifying the folder containing test images and grid dimensions for image display
+IMAGE_FOLDER = "test_images"
+rows, cols = 1, 5
+
+# getting a random sample of 10 images from the test_images folder and cachuing the result
+@st.cache_data
+def get_images():
+    files = [f for f in os.listdir(IMAGE_FOLDER) if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
+    return random.sample(files, 10) if len(files) >= 10 else files
+
+# getting the selected sample images
+selected_files = get_images()
+
+# function to extract full image details
+def get_full_image_details(img_input):
+
+    if img_input is None:
+        return None, None
+    
+    # extracting the full image name   
+    if hasattr(img_input, 'name'):
+        full_name = img_input.name  # from uploaded file object
+    elif isinstance(img_input, str):
+        full_name = os.path.basename(img_input) # from file path string
+    else:
+        return "unknown", "unknown"
+    
+    return full_name
+
+# function to update image state upon upload
+def update_image_state(uploader_key, target_key):
+    # accessing the file using the uploader's key
+    uploaded_file = st.session_state[uploader_key]
+    
+    # updating the target session state variable
+    if uploaded_file is not None:
+        st.session_state[target_key] = uploaded_file
+        #  resetting the already_processed state
+        st.session_state.already_processed = False
+
 
 # setting the page meta title
 st.set_page_config(page_title='Automated Plant Disease Classification', page_icon="🔬",
@@ -26,7 +82,7 @@ st.set_page_config(page_title='Automated Plant Disease Classification', page_ico
 
 # sidebar navigation
 st.sidebar.title("Dashboard")
-app_mode = st.sidebar.radio("Select Page",["Overview","Technical Specifications", "Model Performance", "Plant Disease Model", "Future Works"])
+app_mode = st.sidebar.radio("Select Page",["Overview","Technical Specifications", "Model Performance", "Disease Classifier Model", "Future Works"], index=3)
 
 
 # Main Page
@@ -140,23 +196,64 @@ elif(app_mode=="Model Performance"):
         st.markdown("**Observation:** Both training and validation loss decrease over epochs, indicating that the model is effectively minimizing error on both datasets.")
 
 # Prediction Page
-elif(app_mode=="Plant Disease Model"):
+elif(app_mode=="Disease Classifier Model"):
     # displaying the plant disease prediction interface
-    st.header("Disease Recognition")
-    # file uploader for plant image
-    uploaded_image = st.file_uploader("**Choose a Plant Image:**", type=["jpg","jpeg","png"])
+    st.header("Disease Classifier Model 🌱")
+    # st.write(f"{st.session_state.selected_image}")
+    col1, col2, col3 = st.columns([1.5, 1, 2])
+    # setting up the image upload section via pre-loaded samples or custom upload
+    with col1:
+        st.write("#### Select from Sample Images")
+        # st.write("**Try a plant image to analyze**")
+        st.markdown("""
+    <style>
+    div.stButton > button:first-child {
+        background-color: #28a745;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        height: 3em;
+        width: 100%;
+    }
+    /* targetting the text inside the button to make it bold*/
+    div.stButton > button p {
+        font-weight: bold !important;
+        # font-size: 18px;
+    }
+    div.stButton > button:hover {
+        background-color: #28a745 !important;
+        color: white !important;
+    }
+    </style>""", unsafe_allow_html=True)
+        sample_btn = st.button("Select from the images below for analysis", width="stretch", type="primary", disabled=True)
+        if sample_btn:
+            if len(st.session_state.selected_imgs) >= 1:
+                st.success(f"Loaded **{len(st.session_state.selected_imgs)} images** successfully!")
+    with col3:
+        st.write("#### Upload a Plant Image")
+        st.markdown("[Download Sample Test Images](https://drive.google.com/drive/folders/1qCow9EmWC3V95jwlIkFp_iqI4RCw4hSE?usp=sharing)")
+        uploaded_image = st.file_uploader("**Choose a Plant Image:**", type=["jpg","jpeg","png"], label_visibility="collapsed", key="my_uploader", on_change=update_image_state, args=("my_uploader", "selected_image"))
 
-    # analyzing the uploaded image
-    if uploaded_image is not None:
-        st.image(uploaded_image, width=250)
-        time.sleep(1) # simulating loading time
-        st.success("Image loaded successfully! Click **Analyze Image** to analyze.")
-        if(st.button("Analyze Image")):
-            with st.spinner('processing image...'):
-                time.sleep(2)  # simulating a delay for processing
+    st.divider()
+    # getting the selected image from session state
+    img_to_process = st.session_state.get('selected_image')
+    # analyzing the selected image
+    if img_to_process:
+        st.image(img_to_process, width=250)
+        img_name = get_full_image_details(img_to_process)
+        if not st.session_state.get('already_processed', False):
+            st.toast("Image loaded successfully! Click **Analyze Image** to analyze.", icon="✅", duration=3)
+
+        st.caption(f"**{img_name}**")
+        time.sleep(0.5) # simulating loading time
+        if st.button("Analyze Image", on_click=start_analysis):
+            with st.spinner('analyzing the image...'):
+                time.sleep(3)  # simulating a delay for processing
+                
                 # getting model prediction and confidence score
-                result_index, max_value = model_prediction(uploaded_image)
-                # reading class names
+                result_index, max_value = model_prediction(img_to_process)
+
+                # reading the class names
                 class_name = ['Apple___Apple_scab', 'Apple___Black_rot', 'Apple___Cedar_apple_rust', 'Apple___healthy',
                             'Blueberry___healthy', 'Cherry_(including_sour)___Powdery_mildew', 
                             'Cherry_(including_sour)___healthy', 'Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot', 
@@ -172,19 +269,46 @@ elif(app_mode=="Plant Disease Model"):
                             'Tomato___Target_Spot', 'Tomato___Tomato_Yellow_Leaf_Curl_Virus', 'Tomato___Tomato_mosaic_virus',
                             'Tomato___healthy']
             # displaying the prediction results
-            st.write("Model Prediction")
+            st.write("**Model Prediction**")
             predicted_class = f"Class: **{class_name[result_index]}**"
             confidence_text = f"Confidence Score: **{max_value:.2%}**"
             st.success(f"{predicted_class} \n\n {confidence_text}")
-    else:
-        st.warning("⚠️ No file detected. Please upload an image to enable analysis.")
-        st.button("Analyze Image", disabled=True, help="Please upload an image first.")
-    st.markdown("---")
-    # providing sample test images for download and use
-    st.markdown("### Download Sample Test Images")
-    st.markdown("You can download the sample images to test the model:")
-    st.markdown("[Download Sample Test Images](https://drive.google.com/drive/folders/1FDVDvcanXH1_muWZ4aV7LuzXFQT4bW32?usp=sharing)")
+            # st.session_state.selected_image = None # Reset selected image after analysis
+            # st.session_state.already_processed = False  # Reset processing state for next image
+            # st.rerun()  # Refresh the app to clear previous selections
 
+    else:
+        st.button("Analyze Image", disabled=True, help="Please upload an image first.")
+
+    # building the image selection grid
+    st.markdown("#### Sample Plant Images for Selection")
+    for r in range(rows):
+        row_cols = st.columns(cols)
+        for c in range(cols):
+            idx = r * cols + c
+            if idx < len(selected_files):
+                img_name = selected_files[idx]
+                img_path = os.path.join(IMAGE_FOLDER, img_name)
+                
+                # check if this image is the currently selected one
+                is_selected = (st.session_state.selected_image == img_path)
+                
+                with row_cols[c]:
+                    # conditionally set border color based on selection
+                    border_color = "red" if is_selected else "none"
+                    
+                    # displaying each image in a container with conditional border
+                    with st.container(border=is_selected): 
+                        st.image(img_path, width="stretch")
+                        st.markdown(
+    f"<div style='text-align: center; color: gray; font-size: 0.8rem;'><b>{selected_files[idx]}</b></div>", 
+    unsafe_allow_html=True
+)
+                        
+                        # button to select the image
+                        if st.button("Select", key=f"btn_{idx}", width="stretch", on_click=confirm_img_load):
+                            st.session_state.selected_image = img_path
+                            st.rerun()
 
 # Future Works
 elif(app_mode=="Future Works"):
