@@ -20,7 +20,7 @@ Plant diseases pose a significant threat to global food security. Early detectio
 * **Data/Image Processing:** NumPy, Pandas, OpenCV
 * **Visualization:** Matplotlib, Seaborn
 * **Web Framework:** Streamlit
-* **Development Environment:** Jupyter Notebook, VS Code
+* **Development Environment:** Jupyter Notebook, VS Code, Google Colab
 
 **Key Features:**
 * **CNN Model:** Built using TensorFlow/Keras.
