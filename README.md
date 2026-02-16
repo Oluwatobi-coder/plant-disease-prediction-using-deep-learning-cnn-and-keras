@@ -7,7 +7,7 @@
 </p>
 
 
-A comprehensive deep learning project to classify plant diseases from leaf images using Convolutional Neural Networks (CNN) with TensorFlow and Keras. This repository includes the complete pipeline from data preprocessing and model training to deployment using a Streamlit web application.
+A comprehensive deep learning project to classify plant diseases from leaf images using Convolutional Neural Networks (CNNs) with TensorFlow and Keras. This repository includes the complete pipeline from data preprocessing and model training to deployment using a Streamlit web application.
 
 ## 📌 Project Overview
 
