@@ -1,4 +1,4 @@
-# Plant Disease Prediction using Deep Learning (CNN) & Keras
+# Plant Disease Prediction using Deep Learning (CNNs) & Keras
 
 [Access the Deployed Model on the Web🍅](https://plant-disease-prediction-using-deep-learning-cnn-and-keras.streamlit.app/)
 
