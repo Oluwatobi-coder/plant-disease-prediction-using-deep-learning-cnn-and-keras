@@ -89,10 +89,6 @@ app_mode = st.sidebar.radio("Select Page",["Overview","Technical Specifications"
 if(app_mode=="Overview"):
     # Displaying the header and introductory information
     st.header("Automated Plant Disease Classification System🌱")
-    st.markdown("##### Powered by Deep Learning (CNN) & Keras")
-    st.markdown("[Link to the Source Code on GitHub](https://github.com/Oluwatobi-coder/plant-disease-prediction-using-deep-learning-cnn-and-keras)")
-    st.markdown("**Author**: Bello Oluwatobi")
-    st.markdown("**Last Updated on**: 26th December, 2025")
     # adding a visual separator
     st.markdown("---")
     image_1 = Image.open("./intro_image.jpg")
@@ -204,7 +200,6 @@ elif(app_mode=="Disease Classifier Model"):
     # setting up the image upload section via pre-loaded samples or custom upload
     with col1:
         st.write("#### Select from Sample Images")
-        # st.write("**Try a plant image to analyze**")
         st.markdown("""
     <style>
     div.stButton > button:first-child {
@@ -234,7 +229,7 @@ elif(app_mode=="Disease Classifier Model"):
         st.markdown("[Download Sample Test Images](https://drive.google.com/drive/folders/1qCow9EmWC3V95jwlIkFp_iqI4RCw4hSE?usp=sharing)")
         uploaded_image = st.file_uploader("**Choose a Plant Image:**", type=["jpg","jpeg","png"], label_visibility="collapsed", key="my_uploader", on_change=update_image_state, args=("my_uploader", "selected_image"))
 
-    st.divider()
+    # st.divider()
     # getting the selected image from session state
     img_to_process = st.session_state.get('selected_image')
     # analyzing the selected image
